@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "value",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AccessModifiers.sol": "AccessModifiers"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AccessModifiers.sol": {
+			"keccak256": "0xb7f8e6297674ae1341874d41b3dedd69397ab189cdaa70b512da28842a423e95",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://36461bf7b21633a8f46bd142bfa613b7ac4134ac02cfc524b8e3700818465a9a",
+				"dweb:/ipfs/QmW55bTDN1iab6pmhpu7YvNyC69rJfoxtR8TygyckPsGco"
+			]
+		}
+	},
+	"version": 1
+}
