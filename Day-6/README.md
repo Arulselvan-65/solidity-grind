@@ -60,4 +60,4 @@ describe("ErrorHandling", function () {
 
 ---  
 
-## Happy Coding! 🚀  
+## Happy Coding!   
