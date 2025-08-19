@@ -53,6 +53,19 @@ describe("Counter", function () {
             expect(counter.decrement(MaxUint256)).to.be.revert(ethers);
         });
 
+        it("Should revert on underflow when calling the decrement() function", async function () {
+            const counter = await ethers.deployContract("Counter");
+            expect(counter.decrement(MaxUint256)).to.be.revert(ethers);
+        });
 
+        it("Should revert if any of the factor is not positive when calling the multiply() function", async function () {
+            const counter = await ethers.deployContract("Counter");
+            expect(counter.multiply(3, 0)).to.be.revertedWith("multiply: factor should be positive");
+        });
+
+        it("Should revert if the divisor is 0 when calling the divide() function", async function () {
+            const counter = await ethers.deployContract("Counter");
+            expect(counter.divide(3, 0)).to.be.revertedWith("divide: divisor should not be zero");
+        });
     });
 });

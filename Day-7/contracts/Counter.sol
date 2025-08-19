@@ -18,13 +18,13 @@ contract Counter {
     }
 
     function multiply(uint num, uint by) public pure returns(uint) {
-        require(by > 0, "multiply: factor should be positive");
+        require((num > 0 && by > 0), "multiply: factor should be positive");
         uint res = num * by;
         return res;
     }
 
     function divide(uint num, uint by) public pure returns(uint) {
-        if(by == 0) revert("Dividing by zero.");
+        if(by == 0) revert("divide: divisor should not be zero");
         uint res = num / by;
         return res;
     }

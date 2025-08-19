@@ -1,57 +1,72 @@
-# Sample Hardhat 3 Beta Project (`mocha` and `ethers`)
+# Day-7 Weekly Review & Mini Project
 
-This project showcases a Hardhat 3 Beta project using `mocha` for tests and the `ethers` library for Ethereum interactions.
+This project is a simple **Counter smart contract** written in Solidity. It includes **increment, decrement, multiply, and divide** functionalities with event emissions and safety checks. The project also has **test cases** written in Hardhat using Chai for validation.
 
-To learn more about the Hardhat 3 Beta, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3 Beta](https://hardhat.org/hardhat3-beta-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+---
 
-## Project Overview
+## Smart Contract: `Counter.sol`
 
-This example project includes:
+* `x` is initialized with value `1`.
+* `increment(uint by)`: Increases `x` by the given value and emits an `Increment` event.
+* `decrement(uint by)`: Decreases `x` by the given value and emits a `Decrement` event.
+* `multiply(uint num, uint by)`: Multiplies `num` with `by` and returns the result. Requires `by > 0`.
+* `divide(uint num, uint by)`: Divides `num` by `by`. Reverts if `by == 0`.
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using `mocha` and ethers.js
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
+---
 
-## Usage
+## Test Cases
 
-### Running Tests
+The test cases cover:
 
-To run all the tests in the project, execute the following command:
+### Events
 
-```shell
-npx hardhat test
+* ✅ Emits Increment event when calling increment().
+
+* ✅ Emits Decrement event when calling decrement().
+### Happy Flow
+
+* ✅ Incrementing increases x correctly.
+
+* ✅ Decrementing decreases x correctly.
+
+* ✅ Multiplication returns the correct product.
+
+* ✅ Division returns the correct quotient.
+
+### Worst Case
+
+* ❌ Reverts on overflow when incrementing with MaxUint256.
+
+* ❌ Reverts on underflow when decrementing with MaxUint256.
+
+* ❌ Reverts if factor is not positive when calling multiply().
+
+* ❌ Reverts if divisor is 0 when calling divide()
+---
+
+## Commands
+
+### Compile the smart contract
+
+```bash
+npx hardhat compile
 ```
 
-You can also selectively run the Solidity or `mocha` tests:
+### Deploy the contract
 
-```shell
-npx hardhat test solidity
-npx hardhat test mocha
-```
-
-### Make a deployment to Sepolia
-
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
-
-To run the deployment to a local chain:
-
-```shell
+```bash
 npx hardhat ignition deploy ignition/modules/Counter.ts
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
+### Run the tests
 
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
-
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
-
-```shell
-npx hardhat keystore set SEPOLIA_PRIVATE_KEY
+```bash
+npx hardhat test
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
+---
 
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
-```
+✅ This project demonstrates Solidity basics (state variables, events, require/revert, overflow/underflow handling) along with proper testing using **Hardhat + Chai**.
+
+---
+## Happy Coding!
