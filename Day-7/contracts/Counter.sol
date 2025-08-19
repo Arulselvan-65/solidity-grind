@@ -2,34 +2,30 @@
 pragma solidity ^0.8.28;
 
 contract Counter {
-    uint public x;
+    uint public x=1;
 
     event Increment(uint by);
     event Decrement(uint by);
-    event Multiply(uint by);
-    event Divide(uint by);
 
-    function increment() public {
-        x++;
-        emit Increment(1);
+    function increment(uint by) public {
+        x+=by;
+        emit Increment(by);
     }
 
-    function decrement() public {
-        x--;
-        emit Decrement(1);
+    function decrement(uint by) public {
+        x-=by;
+        emit Decrement(by);
     }
 
-    function multiply(uint num, uint by) public {
+    function multiply(uint num, uint by) public pure returns(uint) {
         require(by > 0, "multiply: factor should be positive");
         uint res = num * by;
-        emit Multiply(by);
         return res;
     }
 
-    function divide(uint num, uint by) public  {
+    function divide(uint num, uint by) public pure returns(uint) {
         if(by == 0) revert("Dividing by zero.");
         uint res = num / by;
-        emit Divide(by);
         return res;
     }
 }
