@@ -55,7 +55,7 @@ npx hardhat compile
 ### Deploy the contract
 
 ```bash
-npx hardhat ignition deploy ignition/modules/Counter.ts
+npx hardhat ignition deploy ignition/modules/Test.ts
 ```
 
 ### Run the tests

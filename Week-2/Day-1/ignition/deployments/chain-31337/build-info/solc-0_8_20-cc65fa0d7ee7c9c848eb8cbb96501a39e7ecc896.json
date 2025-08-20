@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_20-cc65fa0d7ee7c9c848eb8cbb96501a39e7ecc896",
+  "solcVersion": "0.8.20",
+  "solcLongVersion": "0.8.20+commit.a1b79de6",
+  "userSourceNameMap": {
+    "contracts/Test.sol": "project/contracts/Test.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "shanghai",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Test.sol": {
+        "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.20;\n\ncontract Test {\n\n    uint public totalCars;\n\n    struct Car {\n        uint8 groupId;\n        uint32 modelNum;\n        string carName;\n        bytes32 hashData;\n    }\n\n    mapping(uint => Car) public cars;\n\n    function createCar(uint8 _groupId, uint32 _modelNum, string memory _carName) public {\n        bytes32 dataHash = keccak256(abi.encodePacked(_groupId, _modelNum, _carName, block.timestamp));\n        cars[totalCars++] = Car({\n            groupId: _groupId,\n            modelNum: _modelNum,\n            carName: _carName,\n            hashData: dataHash\n        });\n    }\n\n    function getCar(uint id) external view returns(Car memory) {\n        require(id < totalCars, \"No Cars Found!!\");\n        return cars[id];\n    }\n}"
+      }
+    }
+  }
+}
